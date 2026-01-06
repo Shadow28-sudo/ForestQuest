@@ -1,0 +1,114 @@
+/* General Layout */
+.game-body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #111722;
+    color: #e5e7eb;
+    -webkit-font-smoothing: antialiased;
+}
+
+.main-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background Grid */
+.bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    stroke: rgba(255, 255, 255, 0.1);
+    mask-image: radial-gradient(100% 100% at top right, white, transparent);
+}
+
+/* Content */
+.content-wrapper {
+    text-align: center;
+    padding: 0 1.5rem;
+    max-width: 42rem;
+}
+
+.game-logo {
+    max-width: 100%;
+    width: 16rem; /* 256px */
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.highlight {
+    color: #f59e0b; /* Yellow-500 */
+}
+
+.hero-description {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: #d1d5db;
+    line-height: 1.75;
+}
+
+/* Button */
+.play-button {
+    width: 100%;
+    max-width: 20rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    background: linear-gradient(to right, #c45a19, #eab72b);
+    color: white;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.icon-arrow {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+
+/* Fade out animation */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Pulse effect for the loading text */
+#loadingText {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
