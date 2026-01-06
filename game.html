@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Forest Quest - World</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
+        canvas { display: block; }
+        
+        /* Floating Modal Styling */
+        #creationOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        
+        .modal-box {
+            background: #1f2937;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 300px;
+            text-align: center;
+            border: 1px solid #374151;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        input {
+            width: 90%; padding: 10px; margin: 10px 0;
+            background: #111827; border: 1px solid #4b5563;
+            color: white; border-radius: 5px;
+        }
+
+        .class-select {
+            display: flex; justify-content: space-around; margin: 15px 0;
+        }
+
+        .class-btn {
+            background: #374151; border: 2px solid transparent;
+            color: white; padding: 10px; border-radius: 8px; cursor: pointer;
+        }
+
+        .class-btn.selected { border-color: #f59e0b; background: #4b5563; }
+
+        .start-btn {
+            background: #f59e0b; color: #000; font-weight: bold;
+            border: none; padding: 12px 24px; border-radius: 5px;
+            width: 100%; cursor: pointer; margin-top: 10px;
+        }
+
+        .hidden { opacity: 0; visibility: hidden; }
+    </style>
+</head>
+<body>
+
+    <div id="creationOverlay">
+        <div class="modal-box">
+            <h2 style="color:white; margin:0;">Hero's Path</h2>
+            <input type="text" id="charName" placeholder="Character Name...">
+            
+            <div class="class-select">
+                <div class="class-btn" onclick="selectClass('Warrior', this)">⚔️<br>Warrior</div>
+                <div class="class-btn" onclick="selectClass('Mage', this)">🔮<br>Mage</div>
+            </div>
+
+            <button class="start-btn" onclick="startGame()">ENTER WORLD</button>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        let selectedClass = 'Warrior';
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function selectClass(className, el) {
+            selectedClass = className;
+            document.querySelectorAll('.class-btn').forEach(btn => btn.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function startGame() {
+            const name = document.getElementById('charName').value;
+            if(!name) return alert("Enter a name!");
+            
+            localStorage.setItem('pName', name);
+            localStorage.setItem('pClass', selectedClass);
+
+            // Hide with 0.5s animation
+            document.getElementById('creationOverlay').classList.add('hidden');
+            
+            // Start the actual game loop here
+            initGame();
+        }
+
+        function initGame() {
+            // Simple game loop to show it's working
+            function draw() {
+                ctx.fillStyle = "#064e3b"; // Dark Forest Green
+                ctx.fillRect(0,0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = "white";
+                ctx.textAlign = "center";
+                ctx.fillText("Welcome, " + localStorage.getItem('pName'), canvas.width/2, canvas.height/2);
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+    </script>
+</body>
+</html>

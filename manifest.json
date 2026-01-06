@@ -1,0 +1,21 @@
+{
+  "short_name": "ForestQuest",
+  "name": "Forest Quest: Idle RPG",
+  "description": "Embark on an epic idle journey through the dark woods. Choose your class and conquer the forest.",
+  "icons": [
+    {
+      "src": "/images/base.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/base.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111722",
+  "theme_color": "#111722"
+}

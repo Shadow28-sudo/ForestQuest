@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Forest Quest</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="manifest" href="./static/manifest.json">
+</head>
+<body class="game-body">
+    <div class="main-container">
+        <div class="content-wrapper">
+            <img class="game-logo" src="./static/images/base.gif" alt="Logo">
+            <h1 class="hero-title">An <span class="highlight">Epic</span> Adventure</h1>
+            <div class="button-container">
+                <button type="button" onclick="launchGame()" class="play-button" id="mainButton">PLAY NOW</button>
+                <div id="progressContainer" style="display:none; width:100%; background:#374151; height:12px; border-radius:6px; margin-top:20px; overflow:hidden;">
+                    <div id="progressBar" style="width:0%; background:linear-gradient(to right, #f59e0b, #d97706); height:100%; transition: width 0.5s;"></div>
+                </div>
+                <p id="loadingText" style="display:none; color:#9ca3af; margin-top:10px; font-size:14px;"></p>
+            </div>
+        </div>
+    </div>
+    <script src="./static/js/script.js"></script>
+</body>
+</html>
